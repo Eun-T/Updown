@@ -57,9 +57,11 @@ public class LoginService {
     public void selectAllMember(List<Member> members) {
         System.out.println("[전체 회원 조회]");
         System.out.println("[아이디]   [이름]  [최고점수]");
+        StringBuilder stringBuilder = new StringBuilder();
         for(Member m: members){
-            System.out.print(m.getMemberId() + "\t" + m.getMemberName() + "\t" + m.getHighScore());
+            stringBuilder.append(m.getMemberId() + "\t" + m.getMemberName() + "\t" + m.getHighScore() + "\n");
         }
+        System.out.println(stringBuilder.toString());
         System.out.println("");
 
     }
