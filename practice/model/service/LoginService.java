@@ -35,7 +35,7 @@ public class LoginService {
             }
 
         }
-        if (loginMember.getHighScore() == 0 || loginMember.getHighScore() < idx) {
+        if (loginMember.getHighScore() == 0 || loginMember.getHighScore() > idx) {
             loginMember.setHighScore(idx);
             System.out.println("*** 최고 기록 달성 ***");
         }
