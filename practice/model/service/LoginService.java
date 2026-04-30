@@ -18,11 +18,10 @@ public class LoginService {
 
         Random random = new Random();
         int result = random.nextInt(100) + 1;
-        System.out.println(result);
         int myNum = 0;
         int idx = 0;
         while (myNum != result) {
-            System.out.print((idx+1) + "번째 입력 : ");
+            System.out.print((idx + 1) + "번째 입력 : ");
             myNum = sc.nextInt();
             idx++;
             if (myNum < result) {
@@ -49,7 +48,7 @@ public class LoginService {
         System.out.println("아이디 : " + loginMember.getMemberId());
         System.out.println("이름 : " + loginMember.getMemberName());
         System.out.println("최고점수 : " + loginMember.getHighScore() + "회");
-        System.out.println("");
+        System.out.println();
     }
 
     // 전체 회원 조회
@@ -58,11 +57,16 @@ public class LoginService {
         System.out.println("[전체 회원 조회]");
         System.out.println("[아이디]   [이름]  [최고점수]");
         StringBuilder stringBuilder = new StringBuilder();
-        for(Member m: members){
-            stringBuilder.append(m.getMemberId() + "\t" + m.getMemberName() + "\t" + m.getHighScore() + "\n");
+        for (Member m : members) {
+            stringBuilder
+                    .append(m.getMemberId())
+                    .append("\t").append(m.getMemberName())
+                    .append("\t")
+                    .append(m.getHighScore())
+                    .append("\n");
         }
-        System.out.println(stringBuilder.toString());
-        System.out.println("");
+        System.out.println(stringBuilder);
+        System.out.println();
 
     }
 
@@ -74,15 +78,19 @@ public class LoginService {
         System.out.println("[비밀번호 변경]");
         System.out.print("현재 비밀번호 입력 : ");
         String memberPw = sc.next();
-        if(memberPw.equals(loginMember.getMemberPw())){
+        if (memberPw.equals(loginMember.getMemberPw())) {
             System.out.print("새 비밀번호 : ");
             String memberPw2 = sc.next();
-            loginMember.setMemberPw(memberPw2);
-            System.out.println("비밀번호가 변경되었습니다.");
-        }else {
+            if (memberPw2.equals(loginMember.getMemberPw())) {
+                System.out.println("기존 비밀번호와 동일합니다.");
+            } else {
+                loginMember.setMemberPw(memberPw2);
+                System.out.println("비밀번호가 변경되었습니다.");
+            }
+        } else {
             System.out.println("현재 비밀번호가 일치하지 않습니다.");
         }
-        System.out.println("");
+        System.out.println();
     }
 
 

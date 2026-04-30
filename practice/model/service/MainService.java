@@ -120,21 +120,21 @@ public class MainService {
     private void signUp() {
         System.out.print("아이디 : ");
         String memberId = sc.next();
-        while(true){
+        while (true) {
             boolean isMemberId = false;
 
-            for(Member m : members){
-                if(m.getMemberId().equals(memberId)){
+            for (Member m : members) {
+                if (m.getMemberId().equals(memberId)) {
                     isMemberId = true;
                     break;
                 }
             }
 
-            if(isMemberId){
+            if (isMemberId) {
                 System.out.println("중복되는 아이디 입니다. 다시 입력해주세요.");
                 System.out.print("아이디 : ");
                 memberId = sc.next();
-            }else{
+            } else {
                 break;
             }
         }
@@ -163,14 +163,29 @@ public class MainService {
         System.out.print("비밀번호 :");
         String memberPw = sc.next();
 
+        boolean isTrue = true;
+
         for (Member member : members) {
+            if (member.getMemberId().equals(memberId) && member.getMemberPw().equals(memberPw)) {
+                isTrue = false;
+                System.out.println(member.getMemberName() + "님 환영합니다.");
+                loginMember = member;
+                break;
+            }
+        }
+
+        if (isTrue) {
+            System.out.println("아이디 또는 비밀번호가 일치하지 않습니다.");
+        }
+
+        /*for (Member member : members) {
             if (member.getMemberId().equals(memberId) && member.getMemberPw().equals(memberPw)) {
                 System.out.println("유저일님 환영합니다.");
                 loginMember = member;
                 break;
             }
             System.out.println("아이디 또는 비밀번호가 일치하지 않습니다.");
-        }
+        }*/
     }
 
 

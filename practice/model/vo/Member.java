@@ -30,14 +30,9 @@ public class Member {
 		this.highScore = highScore;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", memberName=" + memberName + ", highScore=" + highScore
 				+ "]";
 	}
-
-	
-	
-	
 }
